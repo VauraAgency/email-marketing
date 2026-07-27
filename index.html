@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>VAURA — Email Campaign Marketing</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Inter+Tight:wght@600;700;800&display=swap');
@@ -11,15 +11,19 @@
 
   html, body {
     margin: 0;
-    min-height: 100%;
+    min-height: 100dvh;
     background: #08080b;
     color: rgba(255,255,255,0.92);
     font-family: 'Inter', sans-serif;
+    -webkit-text-size-adjust: 100%;
   }
 
   .aurora {
     position: fixed;
-    inset: 0;
+    top: -10vh;
+    left: 0;
+    right: 0;
+    bottom: -10vh;
     z-index: 0;
     overflow: hidden;
     pointer-events: none;
@@ -63,7 +67,19 @@
     z-index: 1;
     max-width: 920px;
     margin: 0 auto;
-    padding: 64px 24px 90px;
+    padding-top: calc(48px + env(safe-area-inset-top));
+    padding-bottom: calc(80px + env(safe-area-inset-bottom));
+    padding-left: calc(22px + env(safe-area-inset-left));
+    padding-right: calc(22px + env(safe-area-inset-right));
+  }
+
+  @media (max-width: 520px) {
+    .wrap {
+      padding-top: calc(32px + env(safe-area-inset-top));
+      padding-bottom: calc(56px + env(safe-area-inset-bottom));
+    }
+    .card { padding: 24px 20px; }
+    .terms { padding: 26px 22px; }
   }
 
   .brand {
